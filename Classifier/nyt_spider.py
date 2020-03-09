@@ -21,7 +21,7 @@ def get_response(r):
 
 
 def get_soup(url):
-    # Header to be passed in to NYT when scraping article text.
+
     agent = 'Project11'
     agent += 'mvabhinav1408@gmail.com'
     headers = {'user_agent': agent}
@@ -37,9 +37,7 @@ def get_soup(url):
 
 
 def get_body_text(docs):
-    # Grab the url from each document, if it exists, then scrape each url for
-    # its body text. If we get any errors along the way, continue on to the
-    # next document / url to be scraped.
+
     result = []
     for d in docs:
         doc = d.copy()
@@ -60,9 +58,7 @@ def get_body_text(docs):
 
 
 def remove_previously_scraped(coll, docs):
-    # Check to see if the mongo collection already contains the docs returned
-    # from NYT. Return back a list of the ones that aren't in the collection to
-    # be scraped.
+
     new_docs = []
     for doc in docs:
         if not articles.count_documents(filter={'_id': doc['_id']}) > 0:
